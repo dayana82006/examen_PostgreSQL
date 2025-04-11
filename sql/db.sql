@@ -77,7 +77,10 @@ CREATE TABLE cliente(
 CREATE TABLE venta(
     id SERIAL PRIMARY KEY,
     cantidad INT,
-    precio_total DOUBLE PRECISION
+    precio_total DOUBLE PRECISION,
+    producto_id INT,
+    fecha DATE,
+    FOREIGN KEY (producto_id) REFERENCES producto(id)
 );
 CREATE TABLE cliente_venta(
     cliente_id INT,
