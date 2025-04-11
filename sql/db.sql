@@ -55,7 +55,7 @@ CREATE TABLE producto(
 
 CREATE TABLE categoria_producto(
     producto_id INT,
-    id_categoria INT,
+    categoria_id INT,
     FOREIGN KEY (producto_id) REFERENCES producto(id),
     FOREIGN KEY (categoria_id) REFERENCES categoria(id)
 );
@@ -71,8 +71,8 @@ CREATE TABLE cliente(
     nombre VARCHAR(50),
     correo VARCHAR(50),
     numero_tel VARCHAR(20),
-    direccion _id INT,
-    FOREIGN KEY (direccion_id) direccion(id)
+    direccion_id INT,
+    FOREIGN KEY (direccion_id) REFERENCES direccion(id)
 );
 CREATE TABLE venta(
     id SERIAL PRIMARY KEY,
