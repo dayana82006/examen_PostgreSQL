@@ -29,11 +29,11 @@ CREATE TABLE direccion(
     carrera VARCHAR(20),
     avenida VARCHAR(20),
     barrio VARCHAR(20),
-    zip VARCHAR(100),
+    code VARCHAR(100),
     FOREIGN KEY (ciudad_id) REFERENCES ciudad(id)
 );
 CREATE TABLE empresa(
-    id SERIAL PRIMARY KEY ,
+    id SERIAL PRIMARY KEY  ,
     nombre VARCHAR(50),
     direccion_id INT,
     FOREIGN KEY (direccion_id) REFERENCES direccion(id)
@@ -52,6 +52,14 @@ CREATE TABLE producto(
     stock INT,
     FOREIGN KEY (categoria_id) REFERENCES categoria(id)
 );
+
+CREATE TABLE categoria_producto(
+    producto_id INT,
+    id_categoria INT,
+    FOREIGN KEY (producto_id) REFERENCES producto(id),
+    FOREIGN KEY (categoria_id) REFERENCES categoria(id)
+);
+
 CREATE TABLE proveedor_producto(
     id_proveedor INT,
     id_producto INT,
@@ -62,7 +70,9 @@ CREATE TABLE cliente(
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(50),
     correo VARCHAR(50),
-    numero_tel VARCHAR(20)
+    numero_tel VARCHAR(20),
+    direccion _id INT,
+    FOREIGN KEY (direccion_id) direccion(id)
 );
 CREATE TABLE venta(
     id SERIAL PRIMARY KEY,
